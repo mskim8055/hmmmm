@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KaKao | Chat</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="chats-body">
+    <div class="header__wrapper">
+      <!-- 상단 네비게이션바  **페이지공통부분**-->
+      <div class="status-bar">
+        <!-- 네비게이션 왼쪽- 시간 -->
+        <div class="status-bar__column">
+          <span id="clock" class="status-clock"></span>
+        </div>
+        <!-- 네비게이션 오른쪽- 아이콘 -->
+        <div class="status-bar__column">
+          <!-- 시계 -->
+          <i class="fas fa-clock"></i>
+          <!-- 음량 -->
+          <i class="fas fa-volume-mute"></i>
+          <i class="fas fa-wifi"></i>
+          <!-- 베터리 퍼센트 -->
+          <span class="status-battery-level">100%</span>
+          <!-- 베터리 아이콘-->
+          <i class="fas fa-battery-full"></i>
+        </div>
+      </div>
+      <!-- 헤더부분   title과 icon 페이지별 차이있음-->
+      <header class="header">
+        <div class="header__header-column">
+          <!-- 뒤로가기 버튼 -->
+          <a href="index.html" class="header__back-btn">
+            <i class="fas fa-arrow-left "></i>
+          </a>
+          <!-- 타이틀 -->
+          <h1 class="header__title">100원 대학</h1>
+        </div>
+        <!-- 아이콘 리스트 -->
+        <div class="header__header-column">
+          <!-- 상단 네비게이션과 다르게 아이콘간 간격이 있음 - span 안에 넣은 이유 -->
+          <!-- 돋보기 -->
+          <span class="header__icon"><i class="fas fa-search"></i></span>
+          <span class="header__icon"><i class="fas fa-bars"></i></span>
+        </div>
+      </header>
+    </div>
+    <!-- chat 콘텐츠 -->
+    <main class="chat-screen">
+      <!-- 메시지 리스트 -->
+      <ul class="chat__messages">
+        <!-- 채팅방 타임 스탬프 -->
+        <span id="clock9" class="chat__timestamp"></span>
+        <!-- 메시지 타입 1 - 아바타+ 작성자+ 메시지 + 타임스탬프 순  3컬럼 구성-->
+        <li class="incoming-message message">
+          <!-- 컬럼1 아바타 -->
+          <img src="IMG_3963.png" class="message__avatar" />
+          <!-- 컬럼2 작성자+메시지 -->
+          <div class="message__content">
+            <span class="message__author">100원 대학</span>
+            <span class="message__bubble">
+              토론 날짜: 2022-11-21 오후 7:00<br>
+              토론 위치: 이태원 테라로사 2층<br>
+              토론 주제: 서로 간의 거리를 확보하여 서로 비판할 수 있는 상태에서의 연대 가능성<br>
+              <br>
+              참여하시겠습니까?
+            </span>       
+          </div>
+          <!-- 컬럼3 타임스탬프 -->
+          <span class="message__timestamp"></span>
+        </li>
+      </ul>
+    </main>
+    <!-- 채팅 작성 양식  3컬럼 구성-->
+    <div class="chat__write-container">
+      <input type="text" placeholder="Send message" class="chat__write" class="chat__write-input">
+      <!-- 컬럼1 아이콘 -->
+      <div class="chat__icon-left chat__icon">
+        <i class="far fa-plus-square"></i>
+      </div>
+    
+      <!-- 컬럼3 아이콘 -->
+      <div class="chat__icon-right chat__icon">
+        <span class="chat__write-icon">
+          <i class="far fa-smile"></i>
+        </span>
+        <span class="chat__write-icon">
+          <i class="fas fa-microphone"></i>
+        </span>
+      </div>
+    </div>
+    <div class="bigScreen">
+      <img src="images/media.png" alt="" />
+      <span class="bigScreen__text">지원하지 않는 해상도입니다. 화면을 줄여주세요</span>
+    </div>
+  </body>
+
+  <script>
+    var Target = document.getElementById("clock");
+    function clock() {
+        var time = new Date();
+
+        var hours = time.getHours();
+        var minutes = time.getMinutes();
+        var seconds = time.getSeconds();
+
+        Target.innerText = 
+        `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+            
+    }
+
+    var Target = document.getElementById("clock9");
+    function clock9() {
+        var time = new Date();
+
+            var year = time.getFullYear();
+            var month = time.getMonth();
+            var date = time.getDate();
+            var day = time.getDay();
+            var week = ['일', '월', '화', '수', '목', '금', '토'];
+          
+          Target.innerText = `${year + 1}년 ${month + 1}월 ${date}일 ${week[day]}요일 `;
+    }
+    clock();
+    clock9();
+    setInterval(clock, 1000); // 1초마다 실행
+
+</script>
+</html>
